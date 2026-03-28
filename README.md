@@ -1,16 +1,45 @@
-# React + Vite
+# Monte Carlo Options Pricing Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, interactive web application that calculates European options prices using **Monte Carlo simulations** of **Geometric Brownian Motion (GBM)**.
 
-Currently, two official plugins are available:
+![Simulation Demo](https://raw.githubusercontent.com/iamujjawal23/monte-carlo-options/main/public/demo.png "Placeholder if we add an image later")
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🚀 **Live Deployment:** [https://iamujjawal23.github.io/monte-carlo-options/](https://iamujjawal23.github.io/monte-carlo-options/)
 
-## React Compiler
+## Features Let’s You
+- **Visualize the Random Walks**: The application vividly demonstrates terminal share prices across $10,000+$ trajectories.
+- **Adjust Simulation Parameters**: Modify your Spot Price ($S_0$), Strike Price ($K$), Risk-Free Rate ($r$), Volatility ($\sigma$), and Time to Maturity ($T$) effortlessly.
+- **Accurate Benchmarking**: The application features a native mathematical algorithm calculating **Black-Scholes theoretical value** directly in the browser to cross-verify the stochastic approximation precisely.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## The Math Behind It
+The simulation constructs $n$ individual sample paths of the stock price up to time $T$, using the discrete-time approximation of Geometric Brownian Motion:
+$S(t) = S(t-1) \cdot \exp\left(\left(r - \frac{1}{2}\sigma^2\right)dt + \sigma\sqrt{dt} \cdot Z\right)$
+where $Z$ is a random variable sampled from a Standard Normal Distribution via the **Box-Muller transform**. Results are averaged and discounted dynamically.
 
-## Expanding the ESLint configuration
+## Installation for Local Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Check out the repository:
+```bash
+git clone https://github.com/iamujjawal23/monte-carlo-options.git
+```
+2. Navigate into the folder:
+```bash
+cd monte-carlo-options
+```
+3. Install dependencies:
+```bash
+npm install
+```
+4. Run the application:
+```bash
+npm run dev
+```
+
+## Deployment Updates
+To deploy updates to Github Pages:
+```bash
+npm run deploy
+```
+
+---
+*Built intricately with Vite, React, Chart.js, and pure CSS Glassmorphism logic.*
